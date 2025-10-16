@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  /*
+   * Custom Colors
+   * Use the --color-{name} namespace for your colors.
+   */
+
+  /* Orange */
+  --color-orange-500: hsl(28, 100%, 52%);
+  
+  /* Blue */
+  --color-blue-500: hsl(233, 67%, 56%);
+  --color-blue-700: hsl(248, 70%, 36%);
+
+  /* Neutral (You can override default grays or create new names) */
+  --color-neutral-900: hsl(243, 96%, 9%);
+  --color-neutral-800: hsl(243, 27%, 20%);
+  --color-neutral-700: hsl(243, 23%, 24%);
+  --color-neutral-600: hsl(243, 23%, 30%);
+  --color-neutral-300: hsl(240, 6%, 70%);
+  --color-neutral-200: hsl(250, 6%, 84%);
+  --color-neutral-0: hsl(0, 0%, 100%);
+  
+  /* You can optionally set the 'white' and 'black' variables 
+     if you want to control the default utility names like text-white/bg-black */
+  --color-white: hsl(0, 0%, 100%); /* Corresponds to Neutral 0 */
+  --color-black: hsl(243, 96%, 9%);  /* Corresponds to Neutral 900 */
+
+  /*
+   * Custom Fonts
+   * Use the --font-{name} namespace for your fonts.
+   */
+
+  /* Overriding the default sans font for the main body copy font */
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  
+  /* Adding the second font family for specific use, e.g., headings */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+
+
+  /* This ensures your largest responsive utilities trigger at 1440px */
+  /* --breakpoint-xl: 90rem; 1440px / 16px = 90rem */
+  /* --breakpoint-2xl: 90rem; Set both to 1440px or introduce a new 3xl */
+}
+
+/* * Custom Base Styles 
+ * Use the @layer directive for custom element defaults, 
+ * or apply classes to the <html>/<body> elements in your HTML/React component.
+ */
+
+@layer base {
+  html, body, #root{
+    height: 100%;
+  }
+  /* Set body font size and font family defaults using your custom theme variables */
+  body {
+    /* Sets the default font size to 18px */
+    font-size: 18px; 
+    
+    /* Sets the default font family to the custom --font-sans */
+    font-family: var(--font-sans); 
+    
+    /* Optionally set default text color, e.g., to Neutral 800 */
+    color: var(--color-neutral-800);
+  }
+}
