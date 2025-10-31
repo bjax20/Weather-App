@@ -55,12 +55,12 @@
   }
   /* Set body font size and font family defaults using your custom theme variables */
   body {
-    /* Sets the default font size to 18px */
-    font-size: 18px; 
-    
+    /* Sets the default font size to 18px using a percentage of the default 16px */
+    font-size: 112.5%; /* 18px / 16px = 1.125 = 112.5% */
+
     /* Sets the default font family to the custom --font-sans */
-    font-family: var(--font-sans); 
-    
+    font-family: var(--font-sans);
+
     /* Optionally set default text color, e.g., to Neutral 800 */
     color: var(--color-neutral-800);
   }
