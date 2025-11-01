@@ -42,7 +42,15 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to S3
-        run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET }} --delete
+        run: |
+          # Sync all files first with default settings
+          aws s3 sync ./dist s3://${{ secrets.S3_BUCKET }} --delete
+
+          # Set proper cache-control and content-type for HTML files
+          aws s3 cp s3://${{ secrets.S3_BUCKET }}/index.html s3://${{ secrets.S3_BUCKET }}/index.html \
+            --content-type "text/html; charset=utf-8" \
+            --cache-control "no-cache, no-store, must-revalidate" \
+            --metadata-directive REPLACE
 
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CF_DIST_ID }} --paths "/*"
