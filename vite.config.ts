@@ -4,7 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),  tailwindcss()],
+  base: './', // ✅ Ensures relative paths for assets (fixes mobile + CloudFront issue)
+  plugins: [react(), tailwindcss()],
   server: {
     host: true, // Listen on all network interfaces
     port: 5173,
